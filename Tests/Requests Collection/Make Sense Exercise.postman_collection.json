@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "0dfd7843-4685-44ae-93b6-3ebcfd0f0e65",
+		"name": "Make Sense Exercise",
+		"description": "Collection of request to the Make Sense Exercise application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetBlogs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/blog",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"blog"
+					]
+				},
+				"description": "Get all the blogs"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Blog",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\":\"Title of the blog\",\n\t\"body\":\"Body of the blog\",\n\t\"author\":\"Juan Bulfon\",\n\t\"type\": \"Draft\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/blog",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"blog"
+					]
+				},
+				"description": "Create a simple blog"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Blog",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"52c2dcef-33c5-4318-8725-48c767696f6d\",\n    \"blog\": {\n        \"title\": {\n            \"content\": \"My first Blog!\"\n        },\n        \"body\": {\n            \"content\": \"I hope you like it.\"\n        },\n        \"author\": {\n            \"name\": \"Juan Bulfon\"\n        },\n        \"type\": 0\n    }\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/blog",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"blog"
+					]
+				},
+				"description": "Delete a Blog"
+			},
+			"response": []
+		},
+		{
+			"name": "Business Error",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Error should be\" : \"Mandatory fields are missing.\",\n\t\"author\":\"Juan Bulfon\",\n\t\"type\": \"Draft\"\n}"
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/blog",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"blog"
+					]
+				},
+				"description": "Invalid request to show error handler"
+			},
+			"response": []
+		}
+	]
+}
