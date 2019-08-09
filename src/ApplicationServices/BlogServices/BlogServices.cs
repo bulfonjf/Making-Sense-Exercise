@@ -4,6 +4,7 @@ using ApplicationServices.Interfaces;
 using BlogDomain;
 using BlogRepository.Entities;
 using BlogRepository.Interfaces;
+using ApplicationServices.Exceptions;
 
 namespace ApplicationServices.Services
 {
@@ -18,7 +19,17 @@ namespace ApplicationServices.Services
 
         public void Create(Blog blog)
         {
+            ValidateBlog(blog);
             blogRepository.Create(blog);
+        }
+
+        private void ValidateBlog(Blog blog)
+        {
+            if(blog == null)
+                throw new BusinessException("You must provide a blog to create it.");
+            else if(!blog.Title.IsValid() 
+            || !blog.Body.IsValid())
+                throw new BusinessException("Mandatory fields are missing.");
         }
 
         public void Delete(BlogEntity blog)
