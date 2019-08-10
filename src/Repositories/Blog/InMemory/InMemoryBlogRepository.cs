@@ -18,13 +18,10 @@ namespace BlogRepository
                 new BlogEntity()
                 {
                     Id = Guid.NewGuid(),
-                    Blog = new Blog()
-                    {
-                        Title = new Title(){ Content = "My first Blog!"},
-                        Body = new Body(){ Content = "I hope you like it."},
-                        Author = new Author(){ Name = "Juan Bulfon"},
-                        Type = BlogType.Draft,
-                    }
+                    Title = "My first Blog!",
+                    Body = "I hope you like it.",
+                    Author = "Juan Bulfon",
+                    Type = BlogType.Draft.ToString(),
                 }
             };
         }
@@ -36,7 +33,10 @@ namespace BlogRepository
                 BlogEntity newBlog = new BlogEntity()
                 {
                     Id = Guid.NewGuid(),
-                    Blog = blog,
+                    Title = blog.Title.Content,
+                    Body = blog.Body.Content,
+                    Author = blog.Author.Name,
+                    Type = blog.Type.ToString(),
                 };
                 BlogRepository.Add(newBlog);
             });
