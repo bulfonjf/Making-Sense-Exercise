@@ -44,8 +44,8 @@ namespace WebAPI.MiddleWares
             if(exception is BusinessException)
                 message = exception.Message;
 
-            string response =  $@"{{ 'StatusCode' = {context.Response.StatusCode},
-                Message = '{message}'}}";
+            string response =  $@"{{ ""StatusCode"" = ""{context.Response.StatusCode}"",
+                ""Message"" = ""{message}""}}";
 
             return response;
         }
