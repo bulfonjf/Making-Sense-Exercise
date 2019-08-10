@@ -31,12 +31,16 @@ namespace WebAPI.Blogs
             .ForMember(blog => blog.Body, opts => opts.MapFrom(blogDTO => blogDTO))
             .ForMember(blog => blog.Type, opts => opts.MapFrom(blogDTO => (BlogType)Enum.Parse(typeof(BlogType), blogDTO.Type)));
 
-            CreateMap<BlogDTO, BlogEntity>()
-            .ForMember(blog => blog.Id, opts => opts.MapFrom(blogDTO => blogDTO.Id))
-            .ForMember(blog => blog.Blog, opts => opts.MapFrom(blogDTO => blogDTO));
+            CreateMap<BlogDTO, BlogEntity>();
 
             CreateMap<BlogEntity, BlogDTO>()
             .ForMember(blogDTO => blogDTO.Id, opts => opts.MapFrom(blog => blog.Id.ToString("D")));
+
+            CreateMap<Blog, BlogEntity>()
+            .ForMember(blogEntity => blogEntity.Title, opts => opts.MapFrom(blog => blog.Title.Content))
+            .ForMember(blogEntity => blogEntity.Body, opts => opts.MapFrom(blog => blog.Body.Content))
+            .ForMember(blogEntity => blogEntity.Author, opts => opts.MapFrom(blog => blog.Author.Name))
+            .ForMember(blogEntity => blogEntity.Type, opts => opts.MapFrom(blog => Enum.GetName(typeof(BlogType), blog.Type)));
             
         }
     }
