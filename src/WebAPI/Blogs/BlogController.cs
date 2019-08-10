@@ -25,24 +25,25 @@ namespace WebAPI.Blogs
 
         // GET api/blog
         [HttpGet]
-        public ActionResult<IEnumerable<BlogEntity>> GetAll()
+        public async Task<ActionResult<IEnumerable<BlogEntity>>> GetAll()
         {
-            return blogservices.GetAll().ToList();
+            var blogs = await blogservices.GetAll();
+            return blogs.ToList();
         }
 
         // POST api/blog
         [HttpPost]
-        public void Post([FromBody] BlogDTO blogDTO)
+        public async Task Post([FromBody] BlogDTO blogDTO)
         {
             var blog = automapper.Map<BlogDTO, Blog>(blogDTO);
-            blogservices.Create(blog);
+            await blogservices.Create(blog);
         }
 
         [HttpDelete]
-        public void Delete([FromBody] BlogDTO blogDTO)
+        public async Task Delete([FromBody] BlogDTO blogDTO)
         {
             var blog = automapper.Map<BlogDTO, BlogEntity>(blogDTO);
-            blogservices.Delete(blog);
+            await blogservices.Delete(blog);
         }
     }
 }

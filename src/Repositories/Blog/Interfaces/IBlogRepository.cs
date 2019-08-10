@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AuthorDomain;
 using BlogDomain;
 using BlogRepository.Entities;
@@ -8,9 +9,9 @@ namespace BlogRepository.Interfaces
 {
     public interface IBlogRepository
     {
-        IEnumerable<BlogEntity> GetAll();
-        void Create(Blog blog);
+        Task<IEnumerable<BlogEntity>> GetAll();
+        Task Create(Blog blog);
 
-        void Delete(BlogEntity blog);
+        Task Delete(BlogEntity blog);
     }
 }

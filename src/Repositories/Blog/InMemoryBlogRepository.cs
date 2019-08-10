@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AuthorDomain;
 using BlogDomain;
 using BlogRepository.Entities;
@@ -29,26 +30,33 @@ namespace BlogRepository
         }
         public List<BlogEntity> BlogRepository { get; private set; }
 
-        public void Create(Blog blog)
+        public async Task Create(Blog blog)
         {
-            BlogEntity newBlog = new BlogEntity()
-            {
-                Id = Guid.NewGuid(),
-                Blog = blog,
-            };
-            BlogRepository.Add(newBlog);
+            await Task.Run(() => {
+                BlogEntity newBlog = new BlogEntity()
+                {
+                    Id = Guid.NewGuid(),
+                    Blog = blog,
+                };
+                BlogRepository.Add(newBlog);
+            });
         }
 
-        public void Delete(BlogEntity blog)
+        public async Task Delete(BlogEntity blog)
         {
-            var blogToRemove = BlogRepository.FirstOrDefault(b => b.Id == blog.Id);
-            if(blogToRemove != null) 
-                BlogRepository.Remove(blogToRemove);
+            await Task.Run(() => {
+                var blogToRemove = BlogRepository.FirstOrDefault(b => b.Id == blog.Id);
+                if(blogToRemove != null) 
+                    BlogRepository.Remove(blogToRemove);
+            });
         }
 
-        public IEnumerable<BlogEntity> GetAll()
+        public async Task<IEnumerable<BlogEntity>> GetAll()
         {
-            return BlogRepository;
+            var result = await Task.Run(() => {
+                return BlogRepository;
+            }); 
+            return result;
         }
     }
 }

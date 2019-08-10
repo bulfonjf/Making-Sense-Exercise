@@ -5,6 +5,7 @@ using BlogDomain;
 using BlogRepository.Entities;
 using BlogRepository.Interfaces;
 using ApplicationServices.Exceptions;
+using System.Threading.Tasks;
 
 namespace ApplicationServices.Services
 {
@@ -17,10 +18,10 @@ namespace ApplicationServices.Services
             this.blogRepository = blogRepository;
         }
 
-        public void Create(Blog blog)
+        public async Task Create(Blog blog)
         {
             ValidateBlog(blog);
-            blogRepository.Create(blog);
+            await blogRepository.Create(blog);
         }
 
         private void ValidateBlog(Blog blog)
@@ -32,14 +33,15 @@ namespace ApplicationServices.Services
                 throw new BusinessException("Mandatory fields are missing.");
         }
 
-        public void Delete(BlogEntity blog)
+        public async Task Delete(BlogEntity blog)
         {
-            blogRepository.Delete(blog);
+            await blogRepository.Delete(blog);
         }
 
-        public IEnumerable<BlogEntity> GetAll()
+        public async Task<IEnumerable<BlogEntity>> GetAll()
         {
-            return blogRepository.GetAll();
+            var result = await blogRepository.GetAll();
+            return result;
         }
     }
 }
