@@ -2,9 +2,11 @@ using ApplicationServices.Interfaces;
 using ApplicationServices.Services;
 using AutoMapper;
 using BlogRepository;
+using BlogRepository.Contexts;
 using BlogRepository.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,9 +26,11 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration["ConnectionStrings:MySQLConnectionString"];
+            services.AddDbContext<BlogContext>(o => o.UseMySQL(connectionString));
             RegisterAutomapperDependencies(services);
-            services.AddSingleton<IBlogServices, BlogServices>();
-            services.AddSingleton<IBlogRepository, InMemoryBlogRepository>();
+            services.AddScoped<IBlogServices, BlogServices>();
+            services.AddScoped<IBlogRepository, MySQLBlogRepository>();
             services.AddControllers();
         }
 
