@@ -1,6 +1,5 @@
 using System;
 using System.Net;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using ApplicationServices.Exceptions;
 using Microsoft.AspNetCore.Http;

@@ -7,11 +7,13 @@ using ApplicationServices.Interfaces;
 using BlogDomain;
 using BlogRepository.Entities;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAPI.Blogs
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
      public class BlogController : ControllerBase
     {
         private readonly IBlogServices blogservices;
