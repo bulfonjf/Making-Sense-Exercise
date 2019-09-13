@@ -78,6 +78,19 @@ namespace IDP
              };
 
         }
+
+        public static IEnumerable<ApiResource> GetApiResources()
+        {
+            return new List<ApiResource>
+            {
+                new ApiResource("blogapi", "Blog API",
+                new List<string>() {"role" } )
+                {
+                     ApiSecrets = { new Secret("apisecret".Sha256()) }
+                }
+
+            };
+        }
     
     }
 }
