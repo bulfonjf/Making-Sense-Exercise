@@ -45,6 +45,10 @@ namespace IDP
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseHsts();
+            }
 
             app.UseIdentityServer();
             app.UseStaticFiles();
