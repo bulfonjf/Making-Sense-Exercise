@@ -49,7 +49,7 @@ namespace IDP
                 new Client
                 {
                     ClientName = "BlogsUI",
-                    ClientId = "webappclient",
+                    ClientId = "blogclient",
                     AllowedGrantTypes = GrantTypes.Hybrid,
                     AccessTokenType = AccessTokenType.Reference,
                     AccessTokenLifetime = 120,       
@@ -68,7 +68,7 @@ namespace IDP
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         "roles",
-                        "webappclient",
+                        "blogapi",
                     },
                     ClientSecrets =
                     {
@@ -78,7 +78,6 @@ namespace IDP
              };
 
         }
-
         public static IEnumerable<ApiResource> GetApiResources()
         {
             return new List<ApiResource>

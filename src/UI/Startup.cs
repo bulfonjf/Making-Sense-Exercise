@@ -61,7 +61,7 @@ namespace Client
               {
                   options.SignInScheme = "Cookies";
                   options.Authority = "https://localhost:44379";
-                  options.ClientId = "webappclient";
+                  options.ClientId = "blogclient";
                   options.ResponseType = "code id_token";
                   //options.CallbackPath = new PathString("...")
                   //options.SignedOutCallbackPath = new PathString("...")

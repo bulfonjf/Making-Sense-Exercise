@@ -76,7 +76,7 @@ namespace Client.Services
 
             // create a new token client to get new tokens
             var tokenClient = new TokenClient(metaDataResponse.TokenEndpoint,
-                "webappclient", "secret");
+                "blogclient", "secret");
 
             // get the saved refresh token
             var currentRefreshToken = await currentContext
