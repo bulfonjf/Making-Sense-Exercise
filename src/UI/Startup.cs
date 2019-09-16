@@ -63,19 +63,17 @@ namespace Client
                   options.Authority = "https://localhost:44379";
                   options.ClientId = "blogclient";
                   options.ResponseType = "code id_token";
-                  //options.CallbackPath = new PathString("...")
-                  //options.SignedOutCallbackPath = new PathString("...")
                   options.Scope.Add("openid");
                   options.Scope.Add("profile");
                   options.Scope.Add("roles");
-                  options.Scope.Add("blogapi");
-                  options.Scope.Add("offline_access");
+                //   options.Scope.Add("blogapi");
+                //   options.Scope.Add("offline_access");
                   options.SaveTokens = true;
                   options.ClientSecret = "secret";
                   options.GetClaimsFromUserInfoEndpoint = true;
-                  options.ClaimActions.Remove("amr");
-                  options.ClaimActions.DeleteClaim("sid");
-                  options.ClaimActions.DeleteClaim("idp");
+                  options.ClaimActions.Remove("amr"); // remove the filter to include the amr in the jwt
+                  options.ClaimActions.DeleteClaim("sid"); // remove the claim to exclude it from the jwt
+                  options.ClaimActions.DeleteClaim("idp"); // remove the claim to exclude it from the jwt
                   options.ClaimActions.MapUniqueJsonKey("role", "role");
 
                   options.TokenValidationParameters = new TokenValidationParameters
