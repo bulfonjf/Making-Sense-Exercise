@@ -1,0 +1,8 @@
+<div class="text-center">
+    <h1 class="display-4">Access Denied</h1>
+    <p>You don't have access to the page. Maybe another user left its session open.</p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p><a asp-controller="Authentication" asp-action="Logout">Logout</a>.</p>
+    }
+</div>
