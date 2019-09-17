@@ -2,7 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Domains\BlogDomain\BlogDomain.csproj" />
-    <ProjectReference Include="..\..\Repositories\Blog\BlogRepository.csproj" />
+    <ProjectReference Include="..\..\Repositories\BlogRepository\BlogRepository.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
