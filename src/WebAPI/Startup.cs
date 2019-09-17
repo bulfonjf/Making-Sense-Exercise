@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using IdentityServer4.AccessTokenValidation;
 
 namespace WebAPI
 {
@@ -35,11 +36,19 @@ namespace WebAPI
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            var connectionString = Configuration["ConnectionStrings:MySQLConnectionString"];
-            services.AddDbContext<BlogContext>(o => o.UseMySQL(connectionString));
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+            .AddIdentityServerAuthentication(options =>
+            {
+                options.Authority = "https://localhost:44379/";
+                options.ApiName = "blogapi";
+                options.ApiSecret = "apisecret";
+            });
+
+            // var connectionString = Configuration["ConnectionStrings:MySQLConnectionString"];
+            // services.AddDbContext<BlogContext>(o => o.UseMySQL(connectionString));
             RegisterAutomapperDependencies(services);
             services.AddScoped<IBlogServices, BlogServices>();
-            services.AddScoped<IBlogRepository, MySQLBlogRepository>();
+            services.AddScoped<IBlogRepository, InMemoryBlogRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

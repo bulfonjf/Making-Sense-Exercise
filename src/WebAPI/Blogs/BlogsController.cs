@@ -14,12 +14,12 @@ namespace WebAPI.Blogs
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-     public class BlogController : ControllerBase
+     public class BlogsController : ControllerBase
     {
         private readonly IBlogServices blogservices;
         private readonly IMapper automapper;
 
-        public BlogController(IBlogServices blogservices, IMapper automapper)
+        public BlogsController(IBlogServices blogservices, IMapper automapper)
         {
             this.blogservices = blogservices;
             this.automapper = automapper;

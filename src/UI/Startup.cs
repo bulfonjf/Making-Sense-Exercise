@@ -66,7 +66,7 @@ namespace Client
                   options.Scope.Add("openid");
                   options.Scope.Add("profile");
                   options.Scope.Add("roles");
-                //   options.Scope.Add("blogapi");
+                  options.Scope.Add("blogapi");
                 //   options.Scope.Add("offline_access");
                   options.SaveTokens = true;
                   options.ClientSecret = "secret";
