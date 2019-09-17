@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApplicationServices\BlogServices\BlogServices.csproj" />
-    <ProjectReference Include="..\Domains\Blog\BlogDomain.csproj" />
+    <ProjectReference Include="..\Domains\BlogDomain\BlogDomain.csproj" />
     <ProjectReference Include="..\Domains\AuthorDomain\AuthorDomain.csproj" />
   </ItemGroup>
 
