@@ -9,7 +9,7 @@ using BlogRepository.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 
-namespace WebAPI.Blogs
+namespace BlogAPI.Blogs
 {
     [Route("api/[controller]")]
     [ApiController]

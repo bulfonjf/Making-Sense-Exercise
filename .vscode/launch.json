@@ -33,9 +33,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/src/WebApi/bin/Debug/netcoreapp2.2/WebAPI.dll",
+            "program": "${workspaceFolder}/src/BlogAPI/bin/Debug/netcoreapp2.2/BlogAPI.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/WebAPI",
+            "cwd": "${workspaceFolder}/src/BlogAPI",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {

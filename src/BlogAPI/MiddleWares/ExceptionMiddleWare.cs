@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using ApplicationServices.Exceptions;
 using Microsoft.AspNetCore.Http;
 
-namespace WebAPI.MiddleWares
+namespace BlogAPI.MiddleWares
 {
     public class ExceptionMiddleware
     {

@@ -1,4 +1,4 @@
-namespace WebAPI.Blogs
+namespace BlogAPI.Blogs
 {
     public class BlogDTO
     {

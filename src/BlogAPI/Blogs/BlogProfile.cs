@@ -4,7 +4,7 @@ using AutoMapper;
 using BlogDomain;
 using BlogRepository.Entities;
 
-namespace WebAPI.Blogs
+namespace BlogAPI.Blogs
 {
     public class BlogProfile : Profile
     {

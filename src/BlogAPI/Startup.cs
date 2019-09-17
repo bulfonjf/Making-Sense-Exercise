@@ -4,7 +4,7 @@ using AutoMapper;
 using BlogRepository;
 using BlogRepository.Contexts;
 using BlogRepository.Interfaces;
-using WebAPI.MiddleWares;
+using BlogAPI.MiddleWares;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,7 +20,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using IdentityServer4.AccessTokenValidation;
 
-namespace WebAPI
+namespace BlogAPI
 {
     public class Startup
     {
