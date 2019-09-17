@@ -20,8 +20,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApplicationServices\BlogServices\BlogServices.csproj" />
-    <ProjectReference Include="..\Domain\Blog\BlogDomain.csproj" />
-    <ProjectReference Include="..\Domain\AuthorDomain\AuthorDomain.csproj" />
+    <ProjectReference Include="..\Domains\Blog\BlogDomain.csproj" />
+    <ProjectReference Include="..\Domains\AuthorDomain\AuthorDomain.csproj" />
   </ItemGroup>
 
 

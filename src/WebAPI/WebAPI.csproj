@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApplicationServices\BlogServices\BlogServices.csproj" />
-    <ProjectReference Include="..\Domain\Blog\BlogDomain.csproj" />
+    <ProjectReference Include="..\Domains\Blog\BlogDomain.csproj" />
     <ProjectReference Include="..\Repositories\Blog\BlogRepository.csproj" />
   </ItemGroup>
 

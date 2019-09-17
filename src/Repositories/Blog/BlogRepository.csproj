@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\Blog\BlogDomain.csproj" />
-    <ProjectReference Include="..\..\Domain\AuthorDomain\AuthorDomain.csproj" />
+    <ProjectReference Include="..\..\Domains\Blog\BlogDomain.csproj" />
+    <ProjectReference Include="..\..\Domains\AuthorDomain\AuthorDomain.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
