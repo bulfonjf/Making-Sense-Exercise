@@ -2,7 +2,26 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "build all",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "IDP build",
+                "BlogAPI build",
+                "Client build"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ]
+        },
+        {
+            "label": "BlogAPI build",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -11,6 +30,93 @@
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Client build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/UI/Client.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "IDP build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/IDP/IDP.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "run all",
+            "dependsOrder": "parallel",
+            "dependsOn": [
+                "IDP run",
+                "BlogAPI run",
+                "Client run"
+            ],
+            "presentation": {
+                "group": "run"
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ]
+        },
+        {
+            "label": "IDP run",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "run",
+                "-p",
+                "${workspaceFolder}/src/IDP/IDP.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "presentation": {
+                "group": "run",
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "BlogAPI run",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "run",
+                "-p",
+                "${workspaceFolder}/src/BlogAPI/BlogAPI.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "presentation": {
+                "group": "run",
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Client run",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "run",
+                "-p",
+                "${workspaceFolder}/src/UI/Client.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "presentation": {
+                "group": "run",
+            },
             "problemMatcher": "$msCompile"
         },
         {
