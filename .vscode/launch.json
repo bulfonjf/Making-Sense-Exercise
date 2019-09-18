@@ -8,7 +8,7 @@
             "name": "UI",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "Client build",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/src/UI/bin/Debug/netcoreapp2.2/Client.dll",
             "args": [],
@@ -31,7 +31,7 @@
             "name": "API",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "BlogAPI build",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/src/BlogAPI/bin/Debug/netcoreapp2.2/BlogAPI.dll",
             "args": [],
