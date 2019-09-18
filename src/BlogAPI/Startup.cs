@@ -2,22 +2,13 @@
 using ApplicationServices.Services;
 using AutoMapper;
 using BlogRepository;
-using BlogRepository.Contexts;
 using BlogRepository.Interfaces;
 using BlogAPI.MiddleWares;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using IdentityServer4.AccessTokenValidation;
 
 namespace BlogAPI
@@ -36,10 +27,12 @@ namespace BlogAPI
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            var AuthorityEndpoint = Configuration["Authority:Endpoint"];
+
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
             .AddIdentityServerAuthentication(options =>
             {
-                options.Authority = "https://localhost:44379/";
+                options.Authority = AuthorityEndpoint;
                 options.ApiName = "blogapi";
                 options.ApiSecret = "apisecret";
             });

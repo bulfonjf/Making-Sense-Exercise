@@ -42,7 +42,7 @@ namespace IDP
                      new List<string>() { "role" }),
             };
         }
-        public static IEnumerable<Client> GetClients()
+        public static IEnumerable<Client> GetClients(string uiEndpoint)
         {
             return new List<Client>()
             {
@@ -57,11 +57,11 @@ namespace IDP
                     UpdateAccessTokenClaimsOnRefresh = true,
                     RedirectUris = new List<string>()
                     {
-                        "https://localhost:44355/signin-oidc"
+                        $"{uiEndpoint}/signin-oidc"
                     },
                     PostLogoutRedirectUris = new List<string>()
                     {
-                        "https://localhost:44355/signout-callback-oidc"
+                        $"{uiEndpoint}/signout-callback-oidc"
                     },
                     AllowedScopes =
                     {

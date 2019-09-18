@@ -38,8 +38,11 @@ namespace Client
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            var configuration = CreateConfigurationData();
+
+            services.AddSingleton<IConfigurationData>(configuration);
 
             // register an IHttpContextAccessor so we can access the current
             // HttpContext in services by injecting it
@@ -60,7 +63,7 @@ namespace Client
               .AddOpenIdConnect("oidc", options =>
               {
                   options.SignInScheme = "Cookies";
-                  options.Authority = "https://localhost:44379";
+                  options.Authority = configuration.AuthorityEndpoint;
                   options.ClientId = "blogclient";
                   options.ResponseType = "code id_token";
                   options.Scope.Add("openid");
@@ -83,6 +86,13 @@ namespace Client
                   };
 
               });
+        }
+
+        private ConfigurationData CreateConfigurationData()
+        {
+            var authorityEndpoint = Configuration["Authority:Endpoint"];
+            var blogAPIEndpoint = Configuration["BlogAPI:Endpoint"];
+            return new ConfigurationData(authorityEndpoint, blogAPIEndpoint);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

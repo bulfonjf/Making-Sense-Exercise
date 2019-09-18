@@ -36,7 +36,7 @@ namespace IDP
                 .AddTestUsers(Config.GetUsers())
                 .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddInMemoryApiResources(Config.GetApiResources())
-                .AddInMemoryClients(Config.GetClients());
+                .AddInMemoryClients(Config.GetClients(Configuration["UI:Endpoint"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
