@@ -2,9 +2,9 @@
 FROM mcr.microsoft.com/dotnet/core/sdk as build-env
 
 WORKDIR /client
-COPY . .
-RUN dotnet restore src/BlogAPI/BlogAPI.csproj
-RUN dotnet publish src/BlogAPI/BlogAPI.csproj -o /publish -c Release
+COPY ./src .
+RUN dotnet restore BlogAPI/BlogAPI.csproj
+RUN dotnet publish BlogAPI/BlogAPI.csproj -o /publish -c Release
 
 # Runtime Image Stage
 FROM mcr.microsoft.com/dotnet/core/aspnet
